@@ -1,0 +1,7 @@
+**/node_modules/**
+lib
+.idea
+.DS_Store
+tsconfig.tsbuildinfo
+.env
+.npmrc

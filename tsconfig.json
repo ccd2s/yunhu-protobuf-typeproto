@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2025",
+    "module": "Preserve",
+    "moduleResolution": "bundler",
+    "declaration": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "incremental": true,
+    "composite": true,
+    "skipLibCheck": true
+  },
+  "include": ["types"],
+  "exclude": ["node_modules", "dist"]
+}
