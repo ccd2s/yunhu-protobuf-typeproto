@@ -5,13 +5,16 @@
     "moduleResolution": "bundler",
     "declaration": true,
     "allowImportingTsExtensions": true,
-    "noEmit": true,
+    "rewriteRelativeImportExtensions": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "incremental": true,
     "composite": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["node"],
+    "outDir": "lib",
+    "rootDir": "src"
   },
-  "include": ["types"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }

@@ -1,3 +1,3 @@
-export * from "./types.d.ts";
+export * from "./types.ts";
 
 export * from "./websocket";

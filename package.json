@@ -1,7 +1,7 @@
 {
-  "name": "@nanoyunhu/yunhu-protobuf-typia",
-  "version": "0.1.3",
-  "description": "Yunhu's Code-First TypeScript Protobuf Implementation (Using Typia).",
+  "name": "@nanoyunhu/yunhu-protobuf-typeproto",
+  "version": "0.2.0",
+  "description": "Yunhu's Code-First TypeScript Protobuf Implementation (Using Typeproto).",
   "license": "AGPL-3.0-or-later",
   "author": "ccd2s",
   "contributors": [
@@ -9,34 +9,38 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ccd2s/yunhu-protobuf-typia"
+    "url": "git+https://github.com/ccd2s/yunhu-protobuf-typeproto"
   },
   "files": [
-    "types",
-    "README.md"
+    "src",
+    "lib",
+    "README.md",
+    "LICENSE"
   ],
   "type": "module",
-  "types": "types/index.d.ts",
+  "main": "./lib/index.js",
   "exports": {
     ".": {
-      "types": "./types/index.d.ts"
+      "import": "./lib/index.js"
     }
   },
   "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check"
   },
+  "dependencies": {
+    "@saltify/typeproto": "^0.4.1",
+    "@types/node": "^26.1.1"
+  },
   "devDependencies": {
     "oxfmt": "^0.59.0",
     "oxlint": "^1.74.0",
-    "ttsc": "^0.19.1",
     "typescript": "^7.0.2"
-  },
-  "dependencies": {
-    "@types/node": "^26.1.1",
-    "typia": "^13.1.1"
   },
   "engines": {
     "node": "^22.18.0 || >=24.5.0"
