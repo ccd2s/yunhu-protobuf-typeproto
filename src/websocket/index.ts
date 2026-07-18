@@ -28,7 +28,7 @@ export const PWssPushMessageTag = ProtoMessage.of({
 
 export const PWssPushMessageSender = ProtoMessage.of({
   chatId: ProtoField(1, "string"),
-  chatType: ProtoField(2, "uint64"),
+  chatType: ProtoField(2, "int32"),
   name: ProtoField(3, "string"),
   avatarUrl: ProtoField(4, "string"),
   /** 标签(旧版显示) */
