@@ -1,6 +1,6 @@
 {
   "name": "@nanoyunhu/yunhu-protobuf-typeproto",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Yunhu's Code-First TypeScript Protobuf Implementation (Using Typeproto).",
   "license": "AGPL-3.0-or-later",
   "author": "ccd2s",
