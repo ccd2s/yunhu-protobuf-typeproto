@@ -59,7 +59,7 @@ export namespace PWss {
     /** 文件链接 */
     fileUrl: ProtoField(5, "string"),
     /** 提及的对象 ID ,可以填写多个 */
-    mentioned_id: ProtoField(6, "string", "repeated"),
+    mentionedId: ProtoField(6, "string", "repeated"),
     /** 表单消息 */
     form: ProtoField(7, "string"),
     /** 引用消息文字 */
@@ -174,8 +174,8 @@ export namespace PWss {
     chatType: ProtoField(3, "int32"),
     content: ProtoField(4, "string"),
     contentType: ProtoField(5, "int32"),
-    last_update_time: ProtoField(6, "int64"),
-    bot_name: ProtoField(7, "string")
+    lastUpdateTime: ProtoField(6, "int64"),
+    botName: ProtoField(7, "string")
   });
 
   /** Data 数据层 */
