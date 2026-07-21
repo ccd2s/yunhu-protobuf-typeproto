@@ -17,3 +17,6 @@ export namespace PV1 {
 }
 
 export * from "./friend.ts";
+export * from "./group.ts";
+export * from "./msg.ts";
+export * from "./user.ts";
