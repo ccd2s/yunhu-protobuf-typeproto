@@ -130,7 +130,7 @@ export namespace PWss {
     /** 消息类型 */
     contentType: ProtoField(7, "int32"),
     /** 时间戳(毫秒),编辑消息无此项 */
-    //timestamp: ProtoField(8, "number"),
+    timestamp: ProtoField(8, "uint64"),
     /** 指令,编辑消息无此项(客户端限制不让编辑指令消息) */
     cmd: ProtoField(9, PushMessageCmd),
     /** 撤回消息时间,和 8 差别不大,编辑消息无此项 */
