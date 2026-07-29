@@ -7,7 +7,8 @@ export namespace PWss {
     | "draft_input"
     | "edit_message"
     | "invite_apply"
-    | "bot_board_message";
+    | "bot_board_message"
+    | "blocked_message";
 
   export const Base = ProtoMessage.of({
     /** 消息 ID */
@@ -16,6 +17,9 @@ export namespace PWss {
     cmd: ProtoField(2, "string")
   });
 
+  /**
+   * 同时适用于 invite_apply
+   */
   export const Heartbeat = ProtoMessage.of({
     base: ProtoField(1, Base)
   });
@@ -144,6 +148,9 @@ export namespace PWss {
     value: ProtoField(2, PushMessageMsg)
   });
 
+  /**
+   * 同时适用于 edit_message, blocked_message
+   */
   export const PushMessage = ProtoMessage.of({
     base: ProtoField(1, Base),
     data: ProtoField(2, PushMessageData)

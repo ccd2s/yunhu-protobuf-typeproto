@@ -1,6 +1,6 @@
 {
   "name": "@nanoyunhu/yunhu-protobuf-typeproto",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Yunhu's Code-First TypeScript Protobuf Implementation (Using Typeproto).",
   "license": "AGPL-3.0-or-later",
   "author": "ccd2s",
@@ -35,11 +35,11 @@
   },
   "dependencies": {
     "@saltify/typeproto": "^0.4.1",
-    "@types/node": "^26.1.1"
+    "@types/node": "^26.1.2"
   },
   "devDependencies": {
-    "oxfmt": "^0.59.0",
-    "oxlint": "^1.74.0",
+    "oxfmt": "^0.61.0",
+    "oxlint": "^1.76.0",
     "typescript": "^7.0.2"
   },
   "engines": {
