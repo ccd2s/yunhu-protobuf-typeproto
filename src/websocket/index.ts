@@ -36,6 +36,7 @@ export namespace PWss {
     chatType: ProtoField(2, "int32"),
     name: ProtoField(3, "string"),
     avatarUrl: ProtoField(4, "string"),
+    field5: ProtoField(5, "int32"),
     /** 标签(旧版显示) */
     tagOld: ProtoField(6, "string", "repeated"),
     /** 标签 */
@@ -68,8 +69,8 @@ export namespace PWss {
     form: ProtoField(7, "string"),
     /** 引用消息文字 */
     quoteMsgText: ProtoField(8, "string"),
-    /** 表情URL */
-    stickerUrl: ProtoField(9, "string"),
+    /** 图片/表情 ID/文件名 */
+    imageId: ProtoField(9, "string"),
     /** 文章ID */
     postId: ProtoField(10, "string"),
     /** 文章标题 */

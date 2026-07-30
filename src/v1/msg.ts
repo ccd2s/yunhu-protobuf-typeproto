@@ -71,6 +71,6 @@ export namespace PMsgSend {
     /** 获取的消息数 */
     msgCount: ProtoField(7, "int32"),
     /** 与 msgSeq 二选一 */
-    msgId: ProtoField(8, "string"),
+    msgId: ProtoField(8, "string")
   });
 }
