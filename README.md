@@ -117,13 +117,12 @@ const decoded = Example.decode(encoded);
 ```text
 src/
 ├── index.ts              # 统一导出
-├── v1/                   # HTTP / API v1 相关消息
-│   ├── index.ts          # PV1.Base / PV1.Status 等
-│   ├── friend.ts         # 通讯录等（PFriend / PFriendSend）
-│   ├── group.ts          # 群相关
-│   ├── msg.ts            # 发消息等（PMsgSend）
-│   └── user.ts           # 用户信息（PUser）
-└── websocket/            # WebSocket 推送与相关结构（PWss）
+├── v1/                   # v1 路由下的 API 消息
+│   ├── index.ts          # Base / Status 等
+│   ├── msg.ts            # v1/msg 路由下的 API 消息
+│   ├── user.ts           # v1/user 路由下的 API 消息
+│   └── ...
+└── websocket/            # WebSocket 推送与相关结构
     └── index.ts
 ```
 
