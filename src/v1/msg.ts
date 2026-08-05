@@ -2,7 +2,7 @@ import { ProtoField, ProtoMessage } from "@saltify/typeproto";
 import { PV1, PWss } from "../index.ts";
 
 export namespace PMsg {
-  export const ListMessageByMidSeqData = ProtoMessage.of({
+  export const ListMessageData = ProtoMessage.of({
     /** 消息 ID */
     msgId: ProtoField(1, "string"),
     /** 发送者 */
@@ -22,24 +22,24 @@ export namespace PMsg {
     /** 引用消息ID */
     quoteMsgId: ProtoField(9, "string"),
     /** 消息序列 */
-    msgSeq: ProtoField(10, "uint64"),
+    msgSeq: ProtoField(10, "uint32"),
     /** 最后编辑时间 */
     editTime: ProtoField(12, "uint64")
   });
 
   /**
-   * 按消息 ID 或 SEQ 列出消息
+   * 列出消息列表。同时适用于 list-message、list-message-by-mid-seq 和 list-message-by-seq
    */
-  export const ListMessageByMidSeq = ProtoMessage.of({
+  export const ListMessage = ProtoMessage.of({
     status: ProtoField(1, () => PV1.Status),
-    data: ProtoField(2, ListMessageByMidSeqData, "repeated"),
+    data: ProtoField(2, ListMessageData, "repeated"),
     total: ProtoField(3, "int32")
   });
 }
 
 export namespace PMsgSend {
   /**
-   * 发送信息
+   * 发送信息。同时适用于 edit-message
    */
   export const SendMsg = ProtoMessage.of({
     /** 信息 ID */
@@ -62,7 +62,7 @@ export namespace PMsgSend {
    */
   export const SendListMessageByMidSeq = ProtoMessage.of({
     /** 与 msgId 二选一，msgSeq 优先，填 -1 以使用 msgId */
-    msgSeq: ProtoField(3, "int64"),
+    msgSeq: ProtoField(3, "int32"),
     /** 欲获取的信息对象的类别 */
     chatType: ProtoField(4, "int32"),
     /** 欲获取的信息对象 */
@@ -72,5 +72,31 @@ export namespace PMsgSend {
     msgCount: ProtoField(7, "int32"),
     /** 与 msgSeq 二选一 */
     msgId: ProtoField(8, "string")
+  });
+
+  /**
+   * 按消息 SEQ 列出消息，一般用来列出最新消息（距离最新消息大于 30 个只会返回最新消息）
+   */
+  export const SendListMsgBySeq = ProtoMessage.of({
+    /** 从第 N 个消息开始，填 0 列出最新消息 */
+    msgStart: ProtoField(3, "uint32"),
+    /** 欲获取的信息对象的类别 */
+    chatType: ProtoField(4, "int32"),
+    /** 欲获取的信息对象 */
+    chatId: ProtoField(5, "string")
+  });
+
+  /**
+   * 列出消息。列出的是指定消息 ID 前的消息
+   */
+  export const SendListMsg = ProtoMessage.of({
+    /** 获取消息数 */
+    msgCount: ProtoField(2, "int32"),
+    /** 从指定消息 ID 开始 */
+    msgId: ProtoField(3, "string"),
+    /** 欲获取的信息对象的类别 */
+    chatType: ProtoField(4, "int32"),
+    /** 欲获取的信息对象 */
+    chatId: ProtoField(5, "string")
   });
 }
