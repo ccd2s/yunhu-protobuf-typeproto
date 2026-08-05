@@ -32,6 +32,8 @@ export namespace PGroup {
     communityId: ProtoField(15, "uint64"),
     /** 加入的社区名 */
     communityName: ProtoField(16, "string"),
+    /** 封禁 ID */
+    banId: ProtoField(17, "int64"),
     /** 会话置顶 */
     top: ProtoField(19, "bool"),
     /** 管理员列表 */
@@ -44,6 +46,7 @@ export namespace PGroup {
     owner: ProtoField(23, "string"),
     /** 是否加入群推荐 */
     recommendation: ProtoField(24, "bool"),
+    field25: ProtoField(25, "int64"),
     /** 标签(旧版) */
     tagOld: ProtoField(26, "string", "repeated"),
     tag: ProtoField(27, () => PWss.PushMessageTag, "repeated"),
@@ -53,10 +56,12 @@ export namespace PGroup {
     groupCode: ProtoField(29, "string"),
     /** 隐藏群成员（开启时为 1） */
     hideGroupMembers: ProtoField(30, "bool"),
+    field31: ProtoField(31, "int64"),
     /** 消息自动销毁时间 */
     autoDeleteMessage: ProtoField(32, "bool"),
     /** 禁止群成员上传文件到群云盘（开启时为 1） */
-    denyMembersUploadToGroupDisk: ProtoField(33, "bool")
+    denyMembersUploadToGroupDisk: ProtoField(33, "bool"),
+    banReason: ProtoField(34, "string")
   });
 
   export const BotData = ProtoMessage.of({

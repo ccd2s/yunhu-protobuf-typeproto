@@ -36,7 +36,7 @@ export namespace PWss {
     chatType: ProtoField(2, "int32"),
     name: ProtoField(3, "string"),
     avatarUrl: ProtoField(4, "string"),
-    field5: ProtoField(5, "int32"),
+    isVip: ProtoField(5, "bool"),
     /** 标签(旧版显示) */
     tagOld: ProtoField(6, "string", "repeated"),
     /** 标签 */
@@ -139,7 +139,7 @@ export namespace PWss {
     /** 引用消息ID */
     quoteMsgId: ProtoField(11, "string"),
     /** 消息序列 */
-    msgSeq: ProtoField(12, "uint64"),
+    msgSeq: ProtoField(12, "uint32"),
     /** 编辑时间,只有编辑消息有此项 */
     editTime: ProtoField(14, "uint64")
   });
