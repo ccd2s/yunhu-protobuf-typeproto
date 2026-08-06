@@ -116,7 +116,7 @@ const decoded = Example.decode(encoded);
 
 ```text
 src/
-├── index.ts              # 统一导出
+├── index.ts              # 统一导出和基地址
 ├── v1/                   # v1 路由下的 API 消息
 │   ├── index.ts          # Base / Status 等
 │   ├── msg.ts            # v1/msg 路由下的 API 消息
