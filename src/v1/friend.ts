@@ -42,6 +42,60 @@ export namespace PFriend {
     data: ProtoField(2, AddressBookData, "repeated"),
     md5: ProtoField(3, "string")
   });
+
+  /** 申请/邀请列表数据 */
+  export const RequestListData = ProtoMessage.of({
+    /** 接收者名称 */
+    receiverName: ProtoField(1, "string"),
+    /** 接收者头像 */
+    receiverAvatar: ProtoField(2, "string"),
+    /** 请求方名称 */
+    name: ProtoField(3, "string"),
+    /** 请求方头像 */
+    avatar: ProtoField(4, "string"),
+    /** 群组名称 */
+    groupName: ProtoField(5, "string"),
+    /** 群组头像 */
+    groupAvatar: ProtoField(6, "string"),
+    /** 邀请者 ID (字段8同此含义) */
+    inviterId: ProtoField(7, "string"),
+    /** 来源类型 */
+    sourceType: ProtoField(9, "int32"),
+    /** 目标类型 */
+    targetType: ProtoField(10, "int32"),
+    /** 目标 ID */
+    targetId: ProtoField(11, "string"),
+    /** 接收者 ID */
+    receiverId: ProtoField(12, "string"),
+    /** 处理结果 */
+    result: ProtoField(13, "int32"),
+    /** 处理时间戳 */
+    processedAt: ProtoField(14, "int64"),
+    /** 邀请时间戳 */
+    inviteAt: ProtoField(16, "int64"),
+    /** 邀请时间字符串 */
+    inviteAtStr: ProtoField(17, "string"),
+    /** 请求 ID */
+    requestId: ProtoField(18, "int32"),
+    /** 机器人名称 */
+    botName: ProtoField(19, "string"),
+    /** 机器人头像 */
+    botAvatar: ProtoField(20, "string"),
+    /** 处理者名称 */
+    processorName: ProtoField(22, "string"),
+    /** 备注信息 */
+    note: ProtoField(23, "string"),
+    /** 是否为 VIP */
+    isVip: ProtoField(24, "bool")
+  });
+
+  /** 申请/邀请列表 */
+  export const RequestList = ProtoMessage.of({
+    status: ProtoField(1, () => PV1.Status),
+    requests: ProtoField(2, RequestListData, "repeated"),
+    total: ProtoField(3, "int32"),
+    pending: ProtoField(4, "int32")
+  });
 }
 
 export namespace PFriendSend {
