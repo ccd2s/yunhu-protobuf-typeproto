@@ -11,7 +11,7 @@ export namespace PUser {
     email: ProtoField(7, "string"),
     coin: ProtoField(8, "double"),
     isVip: ProtoField(9, "bool"),
-    vipExpiredTime: ProtoField(10, "int64"),
+    vipExpiredTimestamp: ProtoField(10, "int64"),
     invitationCode: ProtoField(12, "string")
   });
 

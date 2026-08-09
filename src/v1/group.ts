@@ -34,19 +34,22 @@ export namespace PGroup {
     communityName: ProtoField(16, "string"),
     /** 封禁 ID */
     banId: ProtoField(17, "int64"),
+    /** 封禁截至时间,时区 UTC+8 */
+    banUntilTimestamp: ProtoField(18, "int64"),
     /** 会话置顶 */
     top: ProtoField(19, "bool"),
     /** 管理员列表 */
     admin: ProtoField(20, "string", "repeated"),
     /** 群聊创建时间 */
-    createTime: ProtoField(21, "uint64"),
+    createTimestamp: ProtoField(21, "uint64"),
     /** 被限制的消息类型,例如 1,2,3 */
     limitedMsgType: ProtoField(22, "string"),
     /** 群主 */
     owner: ProtoField(23, "string"),
     /** 是否加入群推荐 */
     recommendation: ProtoField(24, "bool"),
-    field25: ProtoField(25, "int64"),
+    /** 是否被禁言 */
+    isGag: ProtoField(25, "int64"),
     /** 标签(旧版) */
     tagOld: ProtoField(26, "string", "repeated"),
     tag: ProtoField(27, () => PWss.PushMessageTag, "repeated"),
@@ -61,6 +64,7 @@ export namespace PGroup {
     autoDeleteMessage: ProtoField(32, "bool"),
     /** 禁止群成员上传文件到群云盘（开启时为 1） */
     denyMembersUploadToGroupDisk: ProtoField(33, "bool"),
+    /** 封禁原因 */
     banReason: ProtoField(34, "string")
   });
 
@@ -80,7 +84,7 @@ export namespace PGroup {
     /** 机器人创建者 ID */
     createBy: ProtoField(7, "string"),
     /** 机器人创建时间戳 */
-    createTime: ProtoField(8, "int64"),
+    createTimestamp: ProtoField(8, "int64"),
     /** 使用人数 */
     headcount: ProtoField(9, "int64"),
     /** 是否为私有: 0-公开，1-私有 */
@@ -93,10 +97,19 @@ export namespace PGroup {
     preventDeletion: ProtoField(14, "bool"),
     /** 免打扰: 0-不免打扰，1-免打扰 */
     doNotDisturb: ProtoField(15, "bool"),
+    /** 封禁 ID */
+    banId: ProtoField(16, "int64"),
+    /** 封禁截至时间,时区 UTC+8 */
+    banUntilTimestamp: ProtoField(17, "int64"),
     /** 置顶: 0-未置顶，1-已置顶 */
     top: ProtoField(18, "bool"),
+    /** 是否删除,客户端会显示个已删除的标,虽然说实际上压根碰不到看到这个标的情况 */
+    isDeleted: ProtoField(19, "bool"),
     /** 限制进群: 0-允许进群，1-限制进群 */
-    groupLimit: ProtoField(20, "bool")
+    groupLimit: ProtoField(20, "bool"),
+    field21: ProtoField(21, "int32"),
+    /** 封禁原因 */
+    banReason: ProtoField(22, "string")
   });
 
   /** 获取群聊信息 */

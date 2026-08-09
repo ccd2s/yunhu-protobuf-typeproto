@@ -141,7 +141,7 @@ export namespace PWss {
     /** 消息序列 */
     msgSeq: ProtoField(12, "uint32"),
     /** 编辑时间,只有编辑消息有此项 */
-    editTime: ProtoField(14, "uint64")
+    editTimestamp: ProtoField(14, "uint64")
   });
 
   export const PushMessageData = ProtoMessage.of({
@@ -182,7 +182,7 @@ export namespace PWss {
     chatType: ProtoField(3, "int32"),
     content: ProtoField(4, "string"),
     contentType: ProtoField(5, "int32"),
-    lastUpdateTime: ProtoField(6, "int64"),
+    lastUpdateTimestamp: ProtoField(6, "int64"),
     botName: ProtoField(7, "string")
   });
 

@@ -14,17 +14,17 @@ export namespace PMsg {
     /** 消息内容 */
     content: ProtoField(5, () => PWss.PushMessageContent),
     /** 时间戳(毫秒) */
-    sendTime: ProtoField(6, "uint64"),
+    sendTimestampMs: ProtoField(6, "uint64"),
     /** 指令 */
     cmd: ProtoField(7, () => PWss.PushMessageCmd),
     /** 撤回消息时间 */
-    recallTime: ProtoField(8, "uint64"),
+    recallTimestamp: ProtoField(8, "uint64"),
     /** 引用消息ID */
     quoteMsgId: ProtoField(9, "string"),
     /** 消息序列 */
     msgSeq: ProtoField(10, "uint32"),
     /** 最后编辑时间 */
-    editTime: ProtoField(12, "uint64")
+    editTimestamp: ProtoField(12, "uint64")
   });
 
   /**
