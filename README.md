@@ -1,5 +1,7 @@
 # @nanoyunhu/yunhu-protobuf-typeproto
 
+![npm](https://img.shields.io/npm/v/@nanoyunhu/yunhu-protobuf-typeproto)
+
 云湖 API 的**代码优先（Code-First）** TypeScript Protobuf 类型定义与编解码实现，基于 [`@saltify/typeproto`](https://github.com/SaltifyDev/typeproto)。
 
 在 TypeScript 中直接声明消息结构，即可获得类型推断、序列化与反序列化能力，无需维护独立的 `.proto` 文件，也无需依赖代码生成流水线。

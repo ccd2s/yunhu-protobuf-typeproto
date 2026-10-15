@@ -8,7 +8,10 @@ export namespace PWss {
     | "edit_message"
     | "invite_apply"
     | "bot_board_message"
-    | "blocked_message";
+    | "blocked_message"
+    | "stream_message"
+    | "live_video_user_hang_up"
+    | "file_send_message";
 
   export const Base = ProtoMessage.of({
     /** 消息 ID */
@@ -18,6 +21,8 @@ export namespace PWss {
   });
 
   /**
+   * 对应 cmd：heartbeat_ack
+   *
    * 同时适用于 invite_apply
    */
   export const Heartbeat = ProtoMessage.of({
@@ -44,7 +49,7 @@ export namespace PWss {
   });
 
   export const PushMessageCmd = ProtoMessage.of({
-    /** 命令ID */
+    /** 命令 ID */
     cmdId: ProtoField(1, "uint64"),
     /** 命令名称 */
     name: ProtoField(2, "string"),
@@ -71,7 +76,7 @@ export namespace PWss {
     quoteMsgText: ProtoField(8, "string"),
     /** 图片/表情 ID/文件名 */
     imageId: ProtoField(9, "string"),
-    /** 文章ID */
+    /** 文章 ID */
     postId: ProtoField(10, "string"),
     /** 文章标题 */
     postTitle: ProtoField(11, "string"),
@@ -120,9 +125,9 @@ export namespace PWss {
     msgId: ProtoField(1, "string"),
     /** 发送者,编辑消息无此项 */
     sender: ProtoField(2, PushMessageSender),
-    /** 接收者ID */
+    /** 接收者 ID */
     receiverId: ProtoField(3, "string"),
-    /** 会话的ID */
+    /** 会话的 ID */
     chatId: ProtoField(4, "string"),
     /** 会话类型,编辑消息无此项 */
     chatType: ProtoField(5, "int32"),
@@ -136,7 +141,7 @@ export namespace PWss {
     cmd: ProtoField(9, PushMessageCmd),
     /** 撤回消息时间,和 8 差别不大,编辑消息无此项 */
     deleteTimestamp: ProtoField(10, "uint64"),
-    /** 引用消息ID */
+    /** 引用消息 ID */
     quoteMsgId: ProtoField(11, "string"),
     /** 消息序列 */
     msgSeq: ProtoField(12, "uint32"),
@@ -150,6 +155,8 @@ export namespace PWss {
   });
 
   /**
+   * 对应 cmd：push_message
+   *
    * 同时适用于 edit_message, blocked_message
    */
   export const PushMessage = ProtoMessage.of({
@@ -169,7 +176,11 @@ export namespace PWss {
     value: ProtoField(2, Draft)
   });
 
-  /** 主消息结构 */
+  /**
+   * 草稿同步
+   *
+   * 对应 cmd：draft_input
+   */
   export const DraftInput = ProtoMessage.of({
     base: ProtoField(1, Base),
     data: ProtoField(2, DraftInputData)
@@ -192,9 +203,97 @@ export namespace PWss {
     value: ProtoField(2, BotBoard)
   });
 
-  /** 主消息结构 */
+  /**
+   * 机器人看板更新推送
+   *
+   * 对应 cmd：bot_board_message
+   */
   export const BotBoardMessage = ProtoMessage.of({
     base: ProtoField(1, Base),
     data: ProtoField(2, BotBoardMessageData)
+  });
+
+  /** 挂断详情 */
+  export const Live = ProtoMessage.of({
+    msgId: ProtoField(1, "string"),
+    /** 指令，例如 live_video_user_hang_up */
+    cmd: ProtoField(5, "string")
+  });
+
+  /** Data 数据层 */
+  export const LiveMessageData = ProtoMessage.of({
+    any: ProtoField(1, "string"),
+    value: ProtoField(2, Live)
+  });
+
+  /**
+   * 用户挂断语音
+   *
+   * 对应 cmd：live_video_user_hang_up
+   */
+  export const LiveMessage = ProtoMessage.of({
+    base: ProtoField(1, Base),
+    data: ProtoField(2, LiveMessageData)
+  });
+
+  /** 流式消息详情 */
+  export const Stream = ProtoMessage.of({
+    /** 消息 ID */
+    msgId: ProtoField(1, "string"),
+    /** 接收者 ID */
+    receiverId: ProtoField(2, "string"),
+    /** 会话的 ID */
+    chatId: ProtoField(3, "string"),
+    /** 需要追加的消息内容 */
+    content: ProtoField(4, "string")
+  });
+
+  /** Data 数据层 */
+  export const StreamMessageData = ProtoMessage.of({
+    any: ProtoField(1, "string"),
+    value: ProtoField(2, Stream)
+  });
+
+  /**
+   * 流式消息
+   *
+   * 对应 cmd：stream_message
+   */
+  export const StreamMessage = ProtoMessage.of({
+    base: ProtoField(1, Base),
+    data: ProtoField(2, StreamMessageData)
+  });
+
+  /** 超级文件分享详情 */
+  export const FileSend = ProtoMessage.of({
+    /** 分享者用户 ID */
+    senderId: ProtoField(1, "string"),
+    /** 接收者用户 ID */
+    receiverId: ProtoField(2, "string"),
+    field1: ProtoField(3, "int32"),
+    /** 分享类别区分文本 */
+    sendType: ProtoField(4, "string"),
+    /** 经过转义后的 json 格式发送数据 */
+    data: ProtoField(5, "string"),
+    /** 发送者设备唯一标识符 */
+    senderDeviceId: ProtoField(6, "string")
+  });
+
+  /** Data 数据层 */
+  export const FileSendMessageData = ProtoMessage.of({
+    any: ProtoField(1, "string"),
+    value: ProtoField(2, FileSend)
+  });
+
+  /**
+   * 超级文件分享
+   *
+   * 对应 cmd：file_send_message
+   *
+   * @description 本 WS 消息本来对应的功能已经不存在了，目前是私聊通话使用了本 WS 消息。
+   */
+  export const FileSendMessage = ProtoMessage.of({
+    base: ProtoField(1, Base),
+    data: ProtoField(2, FileSendMessageData)
   });
 }
