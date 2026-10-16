@@ -3,6 +3,13 @@ import { PV1 } from "./index.ts";
 import { PWss } from "../index.ts";
 
 export namespace PGroup {
+  export const Pagination = ProtoMessage.of({
+    /** 分页大小 */
+    size: ProtoField(1, "int32"),
+    /** 页数 */
+    page: ProtoField(2, "int32")
+  });
+
   export const GroupData = ProtoMessage.of({
     groupId: ProtoField(1, "string"),
     name: ProtoField(2, "string"),
@@ -118,6 +125,31 @@ export namespace PGroup {
     data: ProtoField(2, GroupData),
     bot: ProtoField(3, BotData, "repeated")
   });
+
+  export const ListMemberUserInfo = ProtoMessage.of({
+    userId: ProtoField(1, "string"),
+    name: ProtoField(2, "string"),
+    avatarUrl: ProtoField(4, "string"),
+    isVip: ProtoField(6, "bool")
+  });
+
+  export const ListMemberUser = ProtoMessage.of({
+    groupId: ProtoField(1, "string"),
+    userInfo: ProtoField(2, ListMemberUserInfo),
+    /** 权限等级, 群主 100 管理员 2 普通用户无/0 */
+    permissionLevel: ProtoField(3, "int32"),
+    /** 禁言时间戳 */
+    gagTimestamp: ProtoField(4, "int64"),
+    /** 是否被禁言 */
+    isGag: ProtoField(5, "bool")
+  });
+
+  /** 获取群成员列表 */
+  export const ListMember = ProtoMessage.of({
+    status: ProtoField(1, () => PV1.Status),
+    user: ProtoField(2, ListMemberUser, "repeated"),
+    total: ProtoField(3, "int32")
+  });
 }
 
 export namespace PGroupSend {
@@ -148,5 +180,14 @@ export namespace PGroupSend {
     private: ProtoField(10, "bool"),
     /** 隐藏群成员 */
     hideGroupMembers: ProtoField(11, "bool")
+  });
+
+  /** 获取群成员列表 */
+  export const ListMember = ProtoMessage.of({
+    data: ProtoField(2, () => PGroup.Pagination),
+    /** 群聊 ID */
+    groupId: ProtoField(3, "string"),
+    /** 搜索关键词 */
+    keywords: ProtoField(4, "string")
   });
 }
