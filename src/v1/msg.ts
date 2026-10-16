@@ -40,6 +40,8 @@ export namespace PMsg {
 export namespace PMsgSend {
   /**
    * 发送信息。同时适用于 edit-message
+   *
+   * 响应 {@link PV1.Base}
    */
   export const SendMsg = ProtoMessage.of({
     /** 信息 ID */
@@ -98,5 +100,53 @@ export namespace PMsgSend {
     chatType: ProtoField(4, "int32"),
     /** 欲获取的信息对象 */
     chatId: ProtoField(5, "string")
+  });
+
+  /**
+   * 发送按钮点击事件
+   *
+   * 响应 {@link PV1.Base}
+   */
+  export const ButtonReport = ProtoMessage.of({
+    /** 消息 ID */
+    msgId: ProtoField(2, "string"),
+    /** 对象类型 */
+    chatType: ProtoField(3, "int32"),
+    /** 对象 ID */
+    chatId: ProtoField(4, "string"),
+    /** 按钮事件发送者 ID */
+    userId: ProtoField(5, "string"),
+    /** 欲点击按钮的值 */
+    buttonValue: ProtoField(6, "string")
+  });
+
+  /**
+   * 撤回信息。同时适用于 recall-msg-batch
+   *
+   * 响应 {@link PV1.Base}
+   */
+  export const RecallMsg = ProtoMessage.of({
+    /** 要撤回的信息 ID */
+    msgId: ProtoField(2, "string", "repeated"),
+    /** 信息所属对象 ID */
+    chatId: ProtoField(3, "string"),
+    /** 信息所属对象类型 */
+    chatType: ProtoField(4, "int32")
+  });
+
+  /**
+   * 获取消息列表内的图片
+   */
+  export const PicListMsgByMidSeq = ProtoMessage.of({
+    /** 图片 ID */
+    imageId: ProtoField(3, "uint64"),
+    /** 会话类型 */
+    chatType: ProtoField(4, "int32"),
+    /** 会话 ID */
+    chatId: ProtoField(5, "string"),
+    /** 前面（消息时间较早）的图片数量 */
+    earlierQuantities: ProtoField(6, "uint64"),
+    /** 后面（消息时间较新）的图片数量 */
+    latestQuantities: ProtoField(7, "uint64")
   });
 }
