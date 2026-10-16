@@ -8,7 +8,7 @@ export namespace PGroupTagSend {
    * 响应 {@link PGroup.ListMember}
    */
   export const TagMember = ProtoMessage.of({
-    data: ProtoField(2, () => PGroup.Pagination),
+    pagination: ProtoField(2, () => PGroup.Pagination),
     /** 标签所处群聊 ID */
     groupId: ProtoField(3, "string"),
     /** 标签 ID */

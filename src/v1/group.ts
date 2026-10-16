@@ -249,7 +249,7 @@ export namespace PGroupSend {
 
   /** 获取群成员列表 */
   export const ListMember = ProtoMessage.of({
-    data: ProtoField(2, () => PGroup.Pagination),
+    pagination: ProtoField(2, () => PGroup.Pagination),
     /** 群聊 ID */
     groupId: ProtoField(3, "string"),
     /** 搜索关键词 */
