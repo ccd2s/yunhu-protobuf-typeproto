@@ -20,3 +20,5 @@ export * from "./friend.ts";
 export * from "./group.ts";
 export * from "./msg.ts";
 export * from "./user.ts";
+export * from "./instruction.ts";
+export * from "./group-tag.ts";
