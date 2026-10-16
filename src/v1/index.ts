@@ -23,3 +23,4 @@ export * from "./user.ts";
 export * from "./instruction.ts";
 export * from "./group-tag.ts";
 export * from "./bot.ts";
+export * from "./conversation.ts";
