@@ -28,7 +28,7 @@ export namespace PMsg {
   });
 
   /**
-   * 列出消息列表。同时适用于 list-message、list-message-by-mid-seq 和 list-message-by-seq
+   * 列出消息列表。同时适用于 `list-message`、`list-message-by-mid-seq`、`pic-list-message-by-mid-seq` 和 `list-message-by-seq`
    */
   export const ListMessage = ProtoMessage.of({
     status: ProtoField(1, () => PV1.Status),
@@ -39,7 +39,7 @@ export namespace PMsg {
 
 export namespace PMsgSend {
   /**
-   * 发送信息。同时适用于 edit-message
+   * 发送信息。同时适用于 `edit-message`
    *
    * 响应 {@link PV1.Base}
    */
@@ -121,7 +121,7 @@ export namespace PMsgSend {
   });
 
   /**
-   * 撤回信息。同时适用于 recall-msg-batch
+   * 撤回信息。同时适用于 `recall-msg-batch`
    *
    * 响应 {@link PV1.Base}
    */

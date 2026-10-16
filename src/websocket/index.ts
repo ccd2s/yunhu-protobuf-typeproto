@@ -21,9 +21,9 @@ export namespace PWss {
   });
 
   /**
-   * 对应 cmd：heartbeat_ack
+   * 对应 cmd：`heartbeat_ack`
    *
-   * 同时适用于 invite_apply
+   * 同时适用于 `invite_apply`
    */
   export const Heartbeat = ProtoMessage.of({
     base: ProtoField(1, Base)
@@ -155,9 +155,9 @@ export namespace PWss {
   });
 
   /**
-   * 对应 cmd：push_message
+   * 对应 cmd：`push_message`
    *
-   * 同时适用于 edit_message, blocked_message
+   * 同时适用于 `edit_message`, `blocked_message`
    */
   export const PushMessage = ProtoMessage.of({
     base: ProtoField(1, Base),
@@ -179,7 +179,7 @@ export namespace PWss {
   /**
    * 草稿同步
    *
-   * 对应 cmd：draft_input
+   * 对应 cmd：`draft_input`
    */
   export const DraftInput = ProtoMessage.of({
     base: ProtoField(1, Base),
@@ -206,7 +206,7 @@ export namespace PWss {
   /**
    * 机器人看板更新推送
    *
-   * 对应 cmd：bot_board_message
+   * 对应 cmd：`bot_board_message`
    */
   export const BotBoardMessage = ProtoMessage.of({
     base: ProtoField(1, Base),
@@ -229,7 +229,7 @@ export namespace PWss {
   /**
    * 用户挂断语音
    *
-   * 对应 cmd：live_video_user_hang_up
+   * 对应 cmd：`live_video_user_hang_up`
    */
   export const LiveMessage = ProtoMessage.of({
     base: ProtoField(1, Base),
@@ -257,7 +257,7 @@ export namespace PWss {
   /**
    * 流式消息
    *
-   * 对应 cmd：stream_message
+   * 对应 cmd：`stream_message`
    */
   export const StreamMessage = ProtoMessage.of({
     base: ProtoField(1, Base),
@@ -288,7 +288,7 @@ export namespace PWss {
   /**
    * 超级文件分享
    *
-   * 对应 cmd：file_send_message
+   * 对应 cmd：`file_send_message`
    *
    * @description 本 WS 消息本来对应的功能已经不存在了，目前是私聊通话使用了本 WS 消息。
    */

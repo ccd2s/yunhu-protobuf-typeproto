@@ -150,10 +150,75 @@ export namespace PGroup {
     user: ProtoField(2, ListMemberUser, "repeated"),
     total: ProtoField(3, "int32")
   });
+
+  /** 快捷菜单 */
+  export const MenuData = ProtoMessage.of({
+    id: ProtoField(1, "int64"),
+    botId: ProtoField(2, "string"),
+    /** 是否隐藏/删除,猜的 */
+    field3: ProtoField(3, "int32"),
+    name: ProtoField(4, "string"),
+    /** 内容 */
+    content: ProtoField(5, "string"),
+    /** 按钮类型: 1-普通按钮 2-选中按钮 3-下拉选择 */
+    menuType: ProtoField(6, "int32"),
+    createTimestamp: ProtoField(7, "int64"),
+    /** 操作类型 */
+    menuAction: ProtoField(10, "int32"),
+    /** 选择的选项,在选择按钮的时候也作为状态,选中为 1,未选中为 0 */
+    select: ProtoField(99, "string")
+  });
+
+  /** 命令 */
+  export const InstructionData = ProtoMessage.of({
+    id: ProtoField(1, "int64"),
+    botId: ProtoField(2, "string"),
+    /** 指令名 */
+    name: ProtoField(3, "string"),
+    /** 指令描述 */
+    desc: ProtoField(4, "string"),
+    /** 指令类型（1-普通指令, 2-直发指令, 5-自定义输入指令） */
+    type: ProtoField(5, "int32"),
+    /** 输入框提示文字 */
+    hintText: ProtoField(6, "string"),
+    /** 输入框默认文字 */
+    defaultText: ProtoField(7, "string"),
+    /** 是否隐藏/删除,猜的,有误欢迎指正 */
+    field8: ProtoField(8, "int32"),
+    /** 和排序相关 不确定 */
+    sort: ProtoField(9, "int64"),
+    /** 表单 */
+    form: ProtoField(10, "string"),
+    /** 机器人名称 */
+    botName: ProtoField(11, "string")
+  });
+
+  /** 获取群机器人列表 */
+  export const BotList = ProtoMessage.of({
+    status: ProtoField(1, () => PV1.Status),
+    bot: ProtoField(2, BotData, "repeated"),
+    instruction: ProtoField(3, InstructionData, "repeated"),
+    menu: ProtoField(4, MenuData, "repeated")
+  });
+
+  /** 获取群口令关联群聊 */
+  export const InfoAddFriend = ProtoMessage.of({
+    status: ProtoField(1, () => PV1.Status),
+    data: ProtoField(2, GroupData)
+  });
+
+  /** 创建群聊 */
+  export const CreateGroup = ProtoMessage.of({
+    status: ProtoField(1, () => PV1.Status),
+    /** 新群聊 ID */
+    groupId: ProtoField(2, "string")
+  });
 }
 
 export namespace PGroupSend {
-  /** 获取群聊信息 */
+  /**
+   * 获取群聊信息。同时适用于 `dismiss-group` 和 `bot-list`
+   */
   export const GroupInfo = ProtoMessage.of({
     /** 群聊 ID */
     groupId: ProtoField(2, "string")
@@ -189,5 +254,21 @@ export namespace PGroupSend {
     groupId: ProtoField(3, "string"),
     /** 搜索关键词 */
     keywords: ProtoField(4, "string")
+  });
+
+  /** 获取群口令关联群聊 */
+  export const InfoAddFriend = ProtoMessage.of({
+    /** 欲要搜索的群口令 */
+    keyword: ProtoField(2, "string")
+  });
+
+  /** 创建群聊 */
+  export const CreateGroup = ProtoMessage.of({
+    /** 群聊名称 */
+    name: ProtoField(2, "string"),
+    /** 群简介 */
+    introduction: ProtoField(3, "string"),
+    /** 头像 URL */
+    avatarUrl: ProtoField(4, "string")
   });
 }
